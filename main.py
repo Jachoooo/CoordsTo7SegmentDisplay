@@ -1,10 +1,11 @@
 #JKL2021
 
-DEBUG=0
-HI = '-'
-LO = '_'
+DEBUG=0     #enable debug messages
+HI = '-'    #HIGH signal character
+LO = '_'    #LOW signal character
 
-def cords2display(text):
+#convert coords to signal data
+def coords2display(text):
     charDict=loaddict()
     ret=['','','','','','','','']
     for char in text:
@@ -16,6 +17,7 @@ def cords2display(text):
         ret[7]=ret[7]+'0'
     return ret
 
+#load dictionary
 def loaddict():
     input=open("dict.txt","r")
     ret={}
@@ -27,6 +29,7 @@ def loaddict():
     #print(ret)
     return ret
 
+#print (debug function)
 def printdisplay(dataToDisplay):
     for i in range(0,len(dataToDisplay[0])):
         print(' ',end='')
@@ -78,12 +81,13 @@ def printdisplay(dataToDisplay):
             print('  ',end='\n')
         print(' ')
 
+
 if __name__ == "__main__" :
 
     input=open("target.txt","r")
     target=input.readline()[:-1]
     input.close
-    wynik=cords2display(target)
+    wynik=coords2display(target)
     if DEBUG :print(loaddict())
     if DEBUG :print(wynik)
     if DEBUG :printdisplay(wynik)
